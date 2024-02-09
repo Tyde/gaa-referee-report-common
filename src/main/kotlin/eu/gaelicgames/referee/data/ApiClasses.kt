@@ -40,6 +40,19 @@ object LocalDateTimeSerializer : KSerializer<LocalDateTime> {
 
 }
 
+object LocalDateTimeCacheSerializer : KSerializer<LocalDateTime> {
+    override fun deserialize(decoder: Decoder): LocalDateTime {
+        return LocalDateTime.from(DateTimeFormatter.ISO_DATE_TIME.parse(decoder.decodeString()))
+    }
+
+    override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("LocalDateTime", PrimitiveKind.STRING)
+
+    override fun serialize(encoder: Encoder, value: LocalDateTime) {
+        encoder.encodeString(DateTimeFormatter.ISO_DATE_TIME.format(value))
+    }
+
+}
+
 @Serializable
 data class GameCodeDEO(
     val name: String, val id: Long
