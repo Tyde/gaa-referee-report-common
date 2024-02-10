@@ -20,7 +20,8 @@ data class RefereeDEO(
 data class NewRefereeDEO(
     val firstName: String,
     val lastName: String,
-    val mail: String
+    val mail: String,
+    val isReferee: Boolean //Otherwise its a CCC member
 )
 @Serializable
 data class TokenDEO(
