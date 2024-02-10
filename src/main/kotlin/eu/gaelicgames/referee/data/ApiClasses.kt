@@ -11,7 +11,6 @@ import kotlinx.serialization.encoding.Encoder
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import java.util.*
 
 
 object LocalDateSerializer : KSerializer<LocalDate> {
@@ -29,7 +28,19 @@ object LocalDateSerializer : KSerializer<LocalDate> {
 
 object LocalDateTimeSerializer : KSerializer<LocalDateTime> {
     override fun deserialize(decoder: Decoder): LocalDateTime {
-        return LocalDateTime.from(DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(decoder.decodeString()))
+        val string = decoder.decodeString()
+        val dt = kotlin
+            .runCatching {
+                // Parse with offset as it is coming this way from TS
+                LocalDateTime.from(
+                    DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(string)
+                )
+            }
+            .recover {
+                // Parse without offset as it is coming this way from Kotlin (see Cache)
+                LocalDateTime.from(DateTimeFormatter.ISO_DATE_TIME.parse(string))
+            }
+        return dt.getOrThrow()
     }
 
     override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("LocalDateTime", PrimitiveKind.STRING)
