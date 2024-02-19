@@ -1,6 +1,6 @@
 package eu.gaelicgames.referee.data.api
 
-import eu.gaelicgames.referee.data.*
+import eu.gaelicgames.referee.data.LocalDateTimeSerializer
 import kotlinx.serialization.Serializable
 import java.time.LocalDateTime
 
@@ -69,6 +69,8 @@ data class DisciplinaryActionStringDEO(
     val redCardIssued: Boolean
 ) {
     companion object {
+
+
 
     }
 }
