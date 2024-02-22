@@ -44,4 +44,9 @@ data class CompleteTournamentReportDEO(
 )
 
 
+@Serializable
+data class DeleteCompleteTournamentDEO(
+    val id:Long
+)
+
 
