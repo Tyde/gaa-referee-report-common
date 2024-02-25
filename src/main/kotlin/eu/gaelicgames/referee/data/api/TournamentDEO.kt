@@ -40,7 +40,8 @@ data class PublicTournamentReportDEO(
 data class CompleteTournamentReportDEO(
     val tournament: TournamentDEO,
     val games: List<CompleteGameReportWithRefereeReportDEO>,
-    val teams: List<TeamDEO>
+    val teams: List<TeamDEO>,
+    val pitches: List<PitchDEO>
 )
 
 
