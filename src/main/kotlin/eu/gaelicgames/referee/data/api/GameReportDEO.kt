@@ -109,12 +109,14 @@ data class CompleteGameReportWithRefereeReportDEO(
     val gameReport: CompleteGameReportDEO,
     val refereeReport: CompactTournamentReportDEO
 )
+
 @Serializable
 data class PublicDisciplinaryActionDEO(
     val id: Long? = null,
     val team: Long? = null,
     val rule: Long? = null,
     val game: Long? = null,
+    val redCardIssued: Boolean? = null
 )
 @Serializable
 data class PublicGameReportDEO(
