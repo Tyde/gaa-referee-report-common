@@ -1,10 +1,7 @@
 package eu.gaelicgames.referee.data.api
 
-import eu.gaelicgames.referee.data.*
+import eu.gaelicgames.referee.data.LocalDateSerializer
 import kotlinx.serialization.Serializable
-import org.jetbrains.exposed.sql.and
-import org.jetbrains.exposed.sql.select
-import org.jetbrains.exposed.sql.transactions.transaction
 import java.time.LocalDate
 
 
