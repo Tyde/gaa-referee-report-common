@@ -51,3 +51,9 @@ data class DeleteCompleteTournamentDEO(
 )
 
 
+@Serializable
+data class MergeTournamentDEO(
+    val mergeFromId: Long,
+    val mergeToId: Long
+)
+
