@@ -82,7 +82,10 @@ enum class ApiErrorOptions {
     NOT_FOUND,
 
     @SerialName("notAuthorized")
-    NOT_AUTHORIZED
+    NOT_AUTHORIZED,
+
+    @SerialName("illegalArgument")
+    ILLEGAL_ARGUMENT
 }
 
 @Serializable
