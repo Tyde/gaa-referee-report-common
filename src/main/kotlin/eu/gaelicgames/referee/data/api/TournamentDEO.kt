@@ -11,7 +11,9 @@ data class TournamentDEO(
     val name: String,
     val location: String,
     @Serializable(with = LocalDateSerializer::class) val date: LocalDate,
-    val region: Long
+    val region: Long,
+    val isLeague: Boolean? = null,
+    @Serializable(with = LocalDateSerializer::class) val endDate: LocalDate? = null
 )
 
 @Serializable
@@ -19,7 +21,9 @@ data class NewTournamentDEO(
     val name: String,
     val location: String,
     @Serializable(with = LocalDateSerializer::class) val date: LocalDate,
-    val region: Long
+    val region: Long,
+    val isLeague: Boolean? = null,
+    @Serializable(with = LocalDateSerializer::class) val endDate: LocalDate? = null
 )
 
 @Serializable
