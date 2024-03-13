@@ -6,5 +6,6 @@ enum class UserRole {
     INACTIVE, //2
     WAITING_FOR_ACTIVATION, //3
     CCC, //4
-    CCC_WAITING_FOR_ACTIVATION //5
+    CCC_WAITING_FOR_ACTIVATION, //5
+    REFEREE_AND_CCC, //6
 }
