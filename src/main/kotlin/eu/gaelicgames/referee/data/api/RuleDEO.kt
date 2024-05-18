@@ -1,11 +1,6 @@
 package eu.gaelicgames.referee.data.api
 
-import eu.gaelicgames.referee.data.DisciplinaryAction
-import eu.gaelicgames.referee.data.DisciplinaryActions
-import eu.gaelicgames.referee.data.GameCode
-import eu.gaelicgames.referee.data.Rule
 import kotlinx.serialization.Serializable
-import org.jetbrains.exposed.sql.transactions.transaction
 
 @Serializable
 data class RuleDEO(
@@ -15,7 +10,19 @@ data class RuleDEO(
     val isBlack: Boolean,
     val isRed: Boolean,
     val description: String,
-    val isDisabled: Boolean
+    val isDisabled: Boolean,
+    val descriptionFr: String? = null,
+    val descriptionDe: String? = null,
+    val descriptionEs: String? = null
+) {
+}
+
+@Serializable
+data class RuleTranslation(
+    val ruleEn: String,
+    val ruleFr: String,
+    val ruleDe: String,
+    val ruleEs: String
 )
 @Serializable
 data class ModifyRulesDEOState(
@@ -34,5 +41,13 @@ data class NewRuleDEO(
     val isBlack: Boolean,
     val isRed: Boolean,
     val description: String,
-    val isDisabled: Boolean
+    val isDisabled: Boolean,
+    val descriptionFr: String? = null,
+    val descriptionDe: String? = null,
+    val descriptionEs: String? = null
+)
+
+@Serializable
+data class RuleTranslationRequestDEO(
+    val description: String
 )
