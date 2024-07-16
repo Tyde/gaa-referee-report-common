@@ -62,7 +62,8 @@ data class CompactTournamentReportDEO(
     val refereeName: String,
     val numGameReports: Long,
     val numTeams: Long,
-    val additionalInformation: String
+    val additionalInformation: String,
+    @Serializable(with = LocalDateTimeSerializer::class) val lastGameDate: LocalDateTime? = null
 )
 @Serializable
 data class DeleteTournamentReportDEO(
