@@ -1,6 +1,5 @@
 package eu.gaelicgames.referee.data.api
 
-import ExtractedPlayer
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -9,6 +8,7 @@ data class PlayerDEO(
     val jerseyNumber: Int? = null,
     val playerNumber: Long?
 )
+
 @Serializable
 data class TeamsheetUploadSuccessDEO(
     val players: List<PlayerDEO>,
@@ -26,11 +26,10 @@ sealed interface TeamsheetFailure {
     }
 
     @Serializable
-    class TeamsheetStorageFailedDEO() : TeamsheetFailure{
+    class TeamsheetStorageFailedDEO() : TeamsheetFailure {
         companion object {}
     }
 }
-
 
 
 @Serializable
