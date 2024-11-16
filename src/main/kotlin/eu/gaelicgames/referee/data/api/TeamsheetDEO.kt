@@ -50,3 +50,12 @@ data class TeamsheetFileKeyDEO(
     companion object {}
 }
 
+
+@Serializable
+data class ReplaceTeamsheetFileDEO(
+    val oldfileKey: String,
+    val newTeamsheetData: TeamsheetWithClubAndTournamentDataDEO
+) {
+    companion object {}
+}
+
