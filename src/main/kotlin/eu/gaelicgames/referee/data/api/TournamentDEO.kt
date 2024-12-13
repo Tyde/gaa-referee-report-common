@@ -37,6 +37,18 @@ data class PublicTournamentReportDEO(
     val games: List<PublicGameReportDEO>,
     val teams: List<TeamDEO>
 )
+
+@Serializable
+data class PublicTournamentWithTeamsDEO(
+    val tournament: TournamentDEO,
+    val teams: List<TeamDEO>
+)
+
+@Serializable
+data class PublicTournamentListDEO(
+    val tournaments: List<PublicTournamentWithTeamsDEO>
+)
+
 @Serializable
 data class CompleteTournamentReportDEO(
     val tournament: TournamentDEO,
