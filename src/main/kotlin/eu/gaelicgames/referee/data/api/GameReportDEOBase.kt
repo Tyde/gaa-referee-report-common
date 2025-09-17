@@ -19,6 +19,7 @@ data class GameReportDEO(
     val startTime: LocalDateTime? = null,
     val gameType: Long? = null,
     val extraTime: Long? = null,
+    val gameLength: Long? = null,
     val umpirePresentOnTime: Boolean? = null,
     val umpireNotes: String? = null,
     val generalNotes: String? = null,
@@ -31,11 +32,19 @@ data class DeleteGameReportDEO(
 data class GameReportClassesDEO(
     val extraTimeOptions: List<ExtraTimeOptionDEO>,
     val gameTypes: List<GameTypeDEO>,
+    val gameLengthOptions: List<GameLengthOptionDEO>,
 )
 @Serializable
 data class ExtraTimeOptionDEO(
     val id: Long,
     val name: String
+)
+
+@Serializable
+data class GameLengthOptionDEO(
+    val id: Long,
+    val name: String,
+    val minutes: Int,
 )
 
 
