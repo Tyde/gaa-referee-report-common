@@ -100,6 +100,23 @@ data class InjuryDEO(
 data class DeleteInjuryDEO(
     val id:Long
 )
+@Serializable
+data class SubstitutionDEO(
+    val id: Long? = null,
+    val team: Long? = null,
+    val playerOnFirstName: String? = null,
+    val playerOnLastName: String? = null,
+    val playerOnNumber: Int? = null,
+    val playerOffFirstName: String? = null,
+    val playerOffLastName: String? = null,
+    val playerOffNumber: Int? = null,
+    val minute: Int? = null,
+    val game: Long? = null,
+)
+@Serializable
+data class DeleteSubstitutionDEO(
+    val id:Long
+)
 
 @Serializable
 data class GameTypeDEO(
@@ -110,7 +127,8 @@ data class GameTypeDEO(
 data class CompleteGameReportDEO(
     val gameReport: GameReportDEO,
     val injuries: List<InjuryDEO>,
-    val disciplinaryActions: List<DisciplinaryActionDEO>
+    val disciplinaryActions: List<DisciplinaryActionDEO>,
+    val substitutions: List<SubstitutionDEO> = emptyList()
 )
 
 @Serializable
