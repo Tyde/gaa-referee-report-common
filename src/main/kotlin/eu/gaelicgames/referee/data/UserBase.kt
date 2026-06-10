@@ -7,5 +7,9 @@ enum class UserRole {
     WAITING_FOR_ACTIVATION, //3
     CCC, //4
     CCC_WAITING_FOR_ACTIVATION, //5
-    REFEREE_AND_CCC, //6
+    REFEREE_AND_CCC; //6
+
+    fun hasCCCorHigher(): Boolean {
+        return this == CCC ||  this == REFEREE_AND_CCC || this == ADMIN
+    }
 }
