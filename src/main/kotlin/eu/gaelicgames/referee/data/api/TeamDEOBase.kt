@@ -29,7 +29,9 @@ data class NewAmalgamationDEO(
 @Serializable
 data class MergeTeamsDEO(
     val baseTeam: Long, val teamsToMerge: List<Long>,
-    @Serializable(with = LocalDateSerializer::class) val changeDate: LocalDate? = null
+    @Serializable(with = LocalDateSerializer::class) val changeDate: LocalDate? = null,
+    /** merged-team-id -> alias text. A missing entry means the admin denied that alias. */
+    val aliasesToCreate: Map<Long, String> = emptyMap()
 )
 
 @Serializable
