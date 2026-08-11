@@ -11,7 +11,8 @@ import java.time.LocalDateTime
 @Serializable
 data class TeamDEO(
     val name: String, val id: Long, val isAmalgamation: Boolean, val amalgamationTeams: List<TeamDEO>?,
-    @Serializable(with = LocalDateSerializer::class) val changeDate: LocalDate? = null
+    @Serializable(with = LocalDateSerializer::class) val changeDate: LocalDate? = null,
+    val aliases: List<TeamAliasDEO>? = null
 )
 @Serializable
 data class NewTeamDEO(
