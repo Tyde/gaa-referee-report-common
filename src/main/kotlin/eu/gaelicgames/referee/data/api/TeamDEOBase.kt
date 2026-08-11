@@ -20,6 +20,21 @@ data class NewTeamDEO(
     @Serializable(with = LocalDateSerializer::class) val changeDate: LocalDate? = null
 )
 
+/**
+ * Write shape for the team update endpoint. Kept separate from TeamDEO so the
+ * read shape carries no write-only fields.
+ */
+@Serializable
+data class UpdateTeamDEO(
+    val name: String,
+    val id: Long,
+    val isAmalgamation: Boolean,
+    val amalgamationTeams: List<TeamDEO>?,
+    @Serializable(with = LocalDateSerializer::class) val changeDate: LocalDate? = null,
+    /** Old name to keep as a search alias after a rename. null means don't. */
+    val keepOldNameAsAlias: String? = null
+)
+
 @Serializable
 data class NewAmalgamationDEO(
     val name: String, val teams: List<TeamDEO>,
