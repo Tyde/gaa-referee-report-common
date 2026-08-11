@@ -32,6 +32,18 @@ data class MergeTeamsDEO(
 )
 
 @Serializable
+data class TeamAliasDEO(val id: Long, val teamId: Long, val alias: String)
+
+@Serializable
+data class NewTeamAliasDEO(val teamId: Long, val alias: String)
+
+@Serializable
+data class UpdateTeamAliasDEO(val id: Long, val alias: String)
+
+@Serializable
+data class DeleteTeamAliasDEO(val id: Long)
+
+@Serializable
 data class TeamHistoryEventDEO(
     val changeType: String,
     @Serializable(with = LocalDateSerializer::class) val changeDate: LocalDate,
