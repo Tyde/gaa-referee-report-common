@@ -11,12 +11,28 @@ import java.time.LocalDateTime
 @Serializable
 data class TeamDEO(
     val name: String, val id: Long, val isAmalgamation: Boolean, val amalgamationTeams: List<TeamDEO>?,
-    @Serializable(with = LocalDateSerializer::class) val changeDate: LocalDate? = null
+    @Serializable(with = LocalDateSerializer::class) val changeDate: LocalDate? = null,
+    val aliases: List<TeamAliasDEO>? = null
 )
 @Serializable
 data class NewTeamDEO(
     val name: String,
     @Serializable(with = LocalDateSerializer::class) val changeDate: LocalDate? = null
+)
+
+/**
+ * Write shape for the team update endpoint. Kept separate from TeamDEO so the
+ * read shape carries no write-only fields.
+ */
+@Serializable
+data class UpdateTeamDEO(
+    val name: String,
+    val id: Long,
+    val isAmalgamation: Boolean,
+    val amalgamationTeams: List<TeamDEO>?,
+    @Serializable(with = LocalDateSerializer::class) val changeDate: LocalDate? = null,
+    /** Old name to keep as a search alias after a rename. null means don't. */
+    val keepOldNameAsAlias: String? = null
 )
 
 @Serializable
@@ -28,8 +44,22 @@ data class NewAmalgamationDEO(
 @Serializable
 data class MergeTeamsDEO(
     val baseTeam: Long, val teamsToMerge: List<Long>,
-    @Serializable(with = LocalDateSerializer::class) val changeDate: LocalDate? = null
+    @Serializable(with = LocalDateSerializer::class) val changeDate: LocalDate? = null,
+    /** merged-team-id -> alias text. A missing entry means the admin denied that alias. */
+    val aliasesToCreate: Map<Long, String> = emptyMap()
 )
+
+@Serializable
+data class TeamAliasDEO(val id: Long, val teamId: Long, val alias: String)
+
+@Serializable
+data class NewTeamAliasDEO(val teamId: Long, val alias: String)
+
+@Serializable
+data class UpdateTeamAliasDEO(val id: Long, val alias: String)
+
+@Serializable
+data class DeleteTeamAliasDEO(val id: Long)
 
 @Serializable
 data class TeamHistoryEventDEO(
