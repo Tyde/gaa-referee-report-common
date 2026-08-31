@@ -13,9 +13,37 @@ data class RuleDEO(
     val isDisabled: Boolean,
     val descriptionFr: String? = null,
     val descriptionDe: String? = null,
-    val descriptionEs: String? = null
+    val descriptionEs: String? = null,
+    val ruleNumber: String? = null,
+    val ruleNumberSortKey: String? = null,
+    val superseeds: Long? = null,
+    val isLatest: Boolean = true,
+    val createdAt: String? = null,
+    val createdBy: Long? = null,
+    val lineageRootId: Long? = null
 ) {
 }
+
+@Serializable
+data class RuleHistoryDEO(
+    val lineageRootId: Long,
+    val versions: List<RuleDEO>
+)
+
+@Serializable
+data class NewRuleVersionDEO(
+    val parentId: Long,
+    val code: Long,
+    val isCaution: Boolean,
+    val isBlack: Boolean,
+    val isRed: Boolean,
+    val description: String,
+    val isDisabled: Boolean,
+    val ruleNumber: String? = null,
+    val descriptionFr: String? = null,
+    val descriptionDe: String? = null,
+    val descriptionEs: String? = null
+)
 
 @Serializable
 data class RuleTranslation(
@@ -42,6 +70,7 @@ data class NewRuleDEO(
     val isRed: Boolean,
     val description: String,
     val isDisabled: Boolean,
+    val ruleNumber: String? = null,
     val descriptionFr: String? = null,
     val descriptionDe: String? = null,
     val descriptionEs: String? = null
